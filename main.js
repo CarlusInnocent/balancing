@@ -40,9 +40,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let negativesArray = [];
 
+    // Add for options
+    const optionsInput = document.getElementById('options');
+    const optionsForm = document.getElementById('options-form');
+    const optionAmountInput = document.getElementById('option-amount');
+    const optionsList = document.getElementById('options-list');
+
+    let optionsArray = [];
+
     // Update calculation on input change
+    // Add listeners for options
     function addListeners() {
-        [grandTotalInput, negativesInput, ...accountInputs, ...otherInputs].forEach(input => {
+        [grandTotalInput, negativesInput, optionsInput, ...accountInputs, ...otherInputs].forEach(input => {
             input.addEventListener('input', () => {
                 updateFormattedInputs();
                 updateCalculations();
@@ -58,6 +67,17 @@ document.addEventListener('DOMContentLoaded', function() {
             renderNegatives();
             updateCalculations();
             negativeAmountInput.value = '';
+        }
+    });
+
+    optionsForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const value = parseFloat(optionAmountInput.value);
+        if (!isNaN(value)) {
+            optionsArray.push(value);
+            renderOptions();
+            updateCalculations();
+            optionAmountInput.value = '';
         }
     });
 
@@ -79,12 +99,33 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    function renderOptions() {
+        optionsList.innerHTML = '';
+        optionsArray.forEach((val, idx) => {
+            const li = document.createElement('li');
+            li.textContent = formatNumber(val);
+            const btn = document.createElement('button');
+            btn.textContent = 'Remove';
+            btn.onclick = function() {
+                optionsArray.splice(idx, 1);
+                renderOptions();
+                updateCalculations();
+            };
+            li.appendChild(btn);
+            optionsList.appendChild(li);
+        });
+    }
+
     function sumInputs(inputs) {
         return inputs.reduce((sum, input) => sum + (parseFloat(input.value) || 0), 0);
     }
 
     function sumNegatives() {
         return (parseFloat(negativesInput.value) || 0) + negativesArray.reduce((a, b) => a + b, 0);
+    }
+
+    function sumOptions() {
+        return (parseFloat(optionsInput.value) || 0) + optionsArray.reduce((a, b) => a + b, 0);
     }
 
     function formatNumber(num) {
@@ -105,11 +146,15 @@ document.addEventListener('DOMContentLoaded', function() {
         const A = sumInputs(accountInputs);
         const O = sumInputs(otherInputs);
         const N = sumNegatives();
+        const Opt = sumOptions();
 
         const cash = GT - A + O - N;
+        const balance = cash - Opt;
+
         const formattedCash = `<strong>${formatNumber(cash)}</strong>`;
+        const formattedBalance = `<strong>${formatNumber(balance)}</strong>`;
         cashDisplay.innerHTML = formattedCash;
-        balanceDisplay.innerHTML = formattedCash;
+        balanceDisplay.innerHTML = formattedBalance;
     }
 
     addListeners();

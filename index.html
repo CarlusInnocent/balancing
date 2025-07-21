@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Money Balance</title>
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="main.css">
     <style>
         .formatted {
             margin-left: 8px;
@@ -40,8 +40,6 @@
         </section>
         <section id="negatives-section">
             <h2>Negatives</h2>
-            <input type="number" id="negatives" value="0">
-            <span id="negatives-formatted" class="formatted">0.00</span>
             <form id="negatives-form" style="margin-top:10px;">
                 <input type="number" id="negative-amount" placeholder="Add Negative Amount">
                 <button type="submit">Add Negative</button>
@@ -50,8 +48,6 @@
         </section>
         <section id="options-section">
             <h2>Options</h2>
-            <input type="number" id="options" value="0">
-            <span id="options-formatted" class="formatted">0.00</span>
             <form id="options-form" style="margin-top:10px;">
                 <input type="number" id="option-amount" placeholder="Add Option Amount">
                 <button type="submit">Add Option</button>
@@ -70,6 +66,6 @@
     <footer>
         <p>&copy; 2023 Money Balance Tracker</p>
     </footer>
-    <script src="scripts/main.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
