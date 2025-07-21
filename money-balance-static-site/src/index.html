@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Balance</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <style>
+        .formatted {
+            margin-left: 8px;
+            font-weight: bold;
+            color: #2d2d2d;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Money Balance Tracker</h1>
+    </header>
+    <main>
+        <section id="grand-total-section">
+            <h2>Grand Total</h2>
+            <input type="number" id="grand-total" placeholder="Grand Total" value="0">
+            <span id="grand-total-formatted" class="formatted">0.00</span>
+        </section>
+        <section id="accounts-section">
+            <h2>Accounts</h2>
+            <label>Airtel 1: <input type="number" id="airtel1" value="0"><span id="airtel1-formatted" class="formatted">0.00</span></label><br>
+            <label>Airtel 2: <input type="number" id="airtel2" value="0"><span id="airtel2-formatted" class="formatted">0.00</span></label><br>
+            <label>MTN: <input type="number" id="mtn" value="0"><span id="mtn-formatted" class="formatted">0.00</span></label><br>
+            <label>Standbic: <input type="number" id="standbic" value="0"><span id="standbic-formatted" class="formatted">0.00</span></label><br>
+            <label>Equity: <input type="number" id="equity" value="0"><span id="equity-formatted" class="formatted">0.00</span></label><br>
+            <label>DFCU: <input type="number" id="dfcu" value="0"><span id="dfcu-formatted" class="formatted">0.00</span></label><br>
+            <label>Centenary: <input type="number" id="centenary" value="0"><span id="centenary-formatted" class="formatted">0.00</span></label>
+        </section>
+        <section id="others-section">
+            <h2>Others</h2>
+            <label>Savings: <input type="number" id="savings" value="0"><span id="savings-formatted" class="formatted">0.00</span></label><br>
+            <label>Senga: <input type="number" id="senga" value="0"><span id="senga-formatted" class="formatted">0.00</span></label>
+        </section>
+        <section id="negatives-section">
+            <h2>Negatives</h2>
+            <input type="number" id="negatives" value="0">
+            <span id="negatives-formatted" class="formatted">0.00</span>
+            <form id="negatives-form" style="margin-top:10px;">
+                <input type="number" id="negative-amount" placeholder="Add Negative Amount">
+                <button type="submit">Add Negative</button>
+            </form>
+            <ul id="negatives-list"></ul>
+        </section>
+        <section id="options-section">
+            <h2>Options</h2>
+            <input type="number" id="options" value="0">
+            <span id="options-formatted" class="formatted">0.00</span>
+            <form id="options-form" style="margin-top:10px;">
+                <input type="number" id="option-amount" placeholder="Add Option Amount">
+                <button type="submit">Add Option</button>
+            </form>
+            <ul id="options-list"></ul>
+        </section>
+        <section id="cash-section">
+            <h2>Cash</h2>
+            <p id="cash"><strong>0.00</strong></p>
+        </section>
+        <section id="balance-section">
+            <h2>Your Balance</h2>
+            <p id="balance"><strong>0.00</strong></p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Money Balance Tracker</p>
+    </footer>
+    <script src="scripts/main.js"></script>
+</body>
+</html>
